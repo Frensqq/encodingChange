@@ -8,74 +8,65 @@ namespace encodingChange
 {
     public class EncodingConvert
     {
-        //Универсальный метод для создания публичных
-        private static string Convert(string input, string from, string to)
+
+        public enum EncodingType
         {
-            if (input == null) throw new ArgumentNullException("input");
+            Utf8,
+            Windows1251,
+            Ascii,
+            Koi8r,
+            Utf16
+        }
+
+        //Универсальный метод для создания публичных
+        private static string Convert(string input, EncodingType from, EncodingType to)
+        {
+            if (input == null) throw new ArgumentNullException("input is null");
             if (input == "") return "";
+            if (from == to) return input;
 
             try
             {
-                byte[] byteStr = Encoding.GetEncoding(from).GetBytes(input);
-                return Encoding.GetEncoding(to).GetString(byteStr);
+                string fromStr = GetEncodingString(from);
+                string toStr = GetEncodingString(to);
+
+
+                byte[] byteStr = Encoding.GetEncoding(fromStr).GetBytes(input);
+                return Encoding.GetEncoding(toStr).GetString(byteStr);
             }
             catch (ArgumentException ex)
             {
-                throw new ArgumentException($"Неподдерживаемая кодировка: {from} или {to}", ex);
+                throw new ArgumentException($"Ошибка конвертации из {from} в {to}", ex);
             }
         }
 
-        //Utf-8 в другие форматы
-        public static string Utf8ToWindows1251(string input)
-            => Convert(input, "utf-8", "windows-1251");
-        public static string Utf8ToAscii(string input)
-            => Convert(input, "utf-8", "ascii");
-        public static string Utf8ToKoi8r(string input)
-            => Convert(input, "utf-8", "koi8-r");
-        public static string Utf8ToUtf16(string input) 
-            => Convert(input, "utf-8", "utf-16");
+        //получение строки с названием кодировки
+        private static string GetEncodingString(EncodingType encoding)
+        {
+            switch (encoding)
+            {
+                case EncodingType.Utf8:
+                    return "utf-8";
+                case EncodingType.Windows1251:
+                    return "windows-1251";
+                case EncodingType.Ascii:
+                    return "ascii";
+                case EncodingType.Koi8r:
+                    return "koi8-r";
+                case EncodingType.Utf16:
+                    return "utf-16";
+                default:
+                    throw new ArgumentException($"Неподдерживаемая кодировка: {encoding}");
+            }
+        }
 
-
-        //Windows1251 в другие форматы
-        public static string Windows1251ToUtf8(string input) 
-            => Convert(input, "windows-1251", "utf-8");
-        public static string Windows1251ToAscii(string input)
-            => Convert(input, "windows-1251", "ascii");
-        public static string Windows1251ToKoi8r(string input)
-            => Convert(input, "windows-1251", "koi8-r");
-        public static string Windows1251ToUtf16(string input) 
-            => Convert(input, "windows-1251", "utf-16");
-
-        //Ascii в другие форматы
-        public static string AsciiToUtf8(string input)
-            => Convert(input, "ascii", "utf-8");
-
-        public static string AsciiToWindows1251(string input) 
-            => Convert(input, "ascii", "windows-1251");
-        public static string AsciiToKoi8r(string input)
-            => Convert(input, "ascii", "koi8-r");
-        public static string AsciiToUtf16(string input) 
-            => Convert(input, "ascii", "utf-16");
-
-        //Koi8-R в другие форматы
-        public static string Koi8rToUtf8(string input) 
-            => Convert(input, "koi8-r", "utf-8");
-        public static string Koi8rToWindows1251(string input) 
-            => Convert(input, "koi8-r", "windows-1251");
-        public static string Koi8rToAscii(string input) 
-            => Convert(input, "koi8-r", "ascii");
-        public static string Koi8rToUtf16(string input) 
-            => Convert(input, "koi8-r", "utf-16");
-
-
-        //Utf16 в другие форматы
-        public static string Utf16ToUtf8(string input) 
-            => Convert(input, "utf-16", "utf-8");
-        public static string Utf16ToWindows1251(string input) 
-            => Convert(input, "utf-16", "windows-1251");
-        public static string Utf16ToAscii(string input)
-            => Convert(input, "utf-16", "ascii");
-        public static string Utf16ToKoi8r(string input) 
-            => Convert(input, "utf-16", "koi8-r");
+        //Универсальный метод для создания публичных со значениями по умолчанию
+        public static string ConvertDefault(
+            string input,
+            EncodingType from = EncodingType.Utf16,
+            EncodingType to = EncodingType.Windows1251)
+        {
+            return Convert(input, from, to);
+        }
     }
 }
