@@ -14,8 +14,15 @@ namespace encodingChange
             if (input == null) throw new ArgumentNullException("input");
             if (input == "") return "";
 
-            byte[] byteStr = Encoding.GetEncoding(from).GetBytes(input);
-            return Encoding.GetEncoding(to).GetString(byteStr);
+            try
+            {
+                byte[] byteStr = Encoding.GetEncoding(from).GetBytes(input);
+                return Encoding.GetEncoding(to).GetString(byteStr);
+            }
+            catch (ArgumentException ex)
+            {
+                throw new ArgumentException($"Неподдерживаемая кодировка: {from} или {to}", ex);
+            }
         }
 
         //Utf-8 в другие форматы
