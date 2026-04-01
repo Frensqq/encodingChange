@@ -46,5 +46,6 @@ namespace encodingChange
         {
             return Convert(input, "windows-1251", "ascii");
         }
+
     }
 }
