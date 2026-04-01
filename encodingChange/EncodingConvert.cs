@@ -46,6 +46,11 @@ namespace encodingChange
         {
             return Convert(input, "windows-1251", "ascii");
         }
-
+        public static string Utf8ToKoi8r(string input) => Convert(input, "utf-8", "koi8-r");
+        public static string Koi8rToUtf8(string input) => Convert(input, "koi8-r", "utf-8");
+        public static string Windows1251ToKoi8r(string input) => Convert(input, "windows-1251", "koi8-r");
+        public static string Koi8rToWindows1251(string input) => Convert(input, "koi8-r", "windows-1251");
+        public static string AsciiToKoi8r(string input) => Convert(input, "ascii", "koi8-r");
+        public static string Koi8rToAscii(string input) => Convert(input, "koi8-r", "ascii");
     }
 }
