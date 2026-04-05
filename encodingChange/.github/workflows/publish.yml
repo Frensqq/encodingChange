@@ -30,7 +30,7 @@ jobs:
     
     - name: Publish to GitHub Packages
       run: |
-        dotnet nuget push "./nupkg/*.nupkg" `
-          --source "https://nuget.pkg.github.com/Frensqq/index.json" `
-          --api-key ${{ secrets.GITHUB_TOKEN }} `
+        dotnet nuget push "./nupkg/*.nupkg" \
+          --source "https://nuget.pkg.github.com/Frensqq/index.json" \
+          --api-key ${{ secrets.GITHUB_TOKEN }} \
           --skip-duplicate
