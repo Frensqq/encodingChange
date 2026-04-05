@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    
+    <RootNamespace>encodingChange</RootNamespace>
+    <AssemblyName>encodingChange</AssemblyName>
+    <OutputType>Library</OutputType>
+    
+
+    <PackageId>Frensqq.EncodingConvert</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Sergey Lyadov</Authors>
+    <Description>Библиотека для конвертации строк между кодировками UTF-8, Windows-1251, ASCII, KOI8-R, UTF-16</Description>
+    <PackageTags>encoding;converter;utf8;windows1251;ascii;koi8r;utf16</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Frensqq/encodingChange</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Frensqq/encodingChange.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    
+
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+
+</Project>
