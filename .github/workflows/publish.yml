@@ -22,9 +22,6 @@ jobs:
     - name: Pack NuGet package
       run: dotnet pack encodingChange/encodingChange.csproj --configuration Release -p:PackageVersion=1.0.1 --output nupkgs
     
-    - name: List files (debug)
-      run: dir nupkgs
-    
     - name: Publish to GitHub Packages
       run: |
         dotnet nuget push "nupkgs/*.nupkg" \
