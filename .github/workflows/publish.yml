@@ -23,15 +23,10 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore encodingChange\encodingChange.csproj
     
-    - name: Build project
-      run: dotnet build encodingChange\encodingChange.csproj --configuration Release --no-restore
-    
-    - name: Pack NuGet package
-      run: dotnet pack encodingChange\encodingChange.csproj --configuration Release --no-build -p:PackageVersion=1.0.1 --output nupkgs
+    - name: Build and pack
+      run: |
+        dotnet build encodingChange\encodingChange.csproj --configuration Release --no-restore
+        dotnet pack encodingChange\encodingChange.csproj --configuration Release --no-build -p:PackageVersion=1.0.0 --output nupkgs
     
     - name: Publish to GitHub Packages
-      run: |
-        dotnet nuget push "nupkgs/*.nupkg" \
-          --source "https://nuget.pkg.github.com/frensqq/index.json" \
-          --api-key ${{ secrets.GITHUB_TOKEN }} \
-          --skip-duplicate
+      run: dotnet nuget push "nupkgs/*.nupkg" --source "https://nuget.pkg.github.com/frensqq/index.json" --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
