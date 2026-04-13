@@ -17,6 +17,7 @@ namespace encodingChange
             Koi8r,
             Unicode
         }
+ 
         protected static Encoding GetEncoding(EncodingType type)
         {
             switch (type)

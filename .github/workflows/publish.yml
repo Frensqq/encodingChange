@@ -8,9 +8,6 @@ on:
 jobs:
   publish:
     runs-on: windows-latest
-    permissions:
-      contents: read
-      packages: write
     
     steps:
     - uses: actions/checkout@v4
@@ -18,15 +15,16 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '6.0.x'
+        dotnet-version: '8.0.x'
     
-    - name: Restore and build
-      run: |
-        dotnet restore encodingChange\encodingChange.csproj
-        dotnet build encodingChange\encodingChange.csproj --configuration Release --no-restore
+    - name: Restore
+      run: dotnet restore
     
-    - name: Pack NuGet package
-      run: dotnet pack encodingChange\encodingChange.csproj --configuration Release --no-build -p:PackageVersion=1.0.0 --output nupkgs
+    - name: Build
+      run: dotnet build --configuration Release
+
+    - name: Pack
+      run: dotnet pack --configuration Release --output ./nupkgs
     
     - name: Publish to GitHub Packages
-      run: dotnet nuget push "nupkgs/Frensqq.EncodingConvert.1.0.0.nupkg" --source "https://nuget.pkg.github.com/frensqq/index.json" --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
+      run: dotnet nuget push "nupkgs/Frensqq.EncodingConvert.1.0.0.nupkg" --source "https://nuget.pkg.github.com/frensqq/index.json" --api-key ${{ secrets.GITHUB_TOKEN }}
