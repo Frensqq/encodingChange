@@ -1,72 +1,56 @@
-﻿ using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using System.IO;
+using System.Text;  
 
-namespace encodingChange
+namespace EncodingConverter
 {
     public class EncodingConvert
     {
-
         public enum EncodingType
         {
             Utf8,
             Windows1251,
             Ascii,
             Koi8r,
-            Utf16
+            Unicode
         }
 
-        //Универсальный метод для создания публичных
-        private static string Convert(string input, EncodingType from, EncodingType to)
+        public static string ConvertString(string input, EncodingType from, EncodingType to)
         {
-            if (input == null) throw new ArgumentNullException("input is null");
-            if (input == "") return "";
-            if (from == to) return input;
+            if (input == null )
+                throw new ArgumentException(nameof(input), "Строка не может быть null");
+
+            if (from == to)
+                return input;
 
             try
             {
-                string fromStr = GetEncodingString(from);
-                string toStr = GetEncodingString(to);
-
-
-                byte[] byteStr = Encoding.GetEncoding(fromStr).GetBytes(input);
-                return Encoding.GetEncoding(toStr).GetString(byteStr);
+                byte[] bytes = GetEncoding(from).GetBytes(input);
+                return GetEncoding(to).GetString(bytes);
             }
-            catch (ArgumentException ex)
+            catch
             {
-                throw new ArgumentException($"Ошибка конвертации из {from} в {to}", ex);
+                throw new InvalidOperationException($"Ошибка конвертации строки {input}");
             }
         }
 
-        //получение строки с названием кодировки
-        private static string GetEncodingString(EncodingType encoding)
+        protected static Encoding GetEncoding(EncodingType type)
         {
-            switch (encoding)
+            switch (type)
             {
                 case EncodingType.Utf8:
-                    return "utf-8";
+                    return Encoding.UTF8;
                 case EncodingType.Windows1251:
-                    return "windows-1251";
+                    return Encoding.GetEncoding("windows-1251");
                 case EncodingType.Ascii:
-                    return "ascii";
+                    return Encoding.ASCII;
                 case EncodingType.Koi8r:
-                    return "koi8-r";
-                case EncodingType.Utf16:
-                    return "utf-16";
+                    return Encoding.GetEncoding("koi8-r");
+                case EncodingType.Unicode:
+                    return Encoding.Unicode;
                 default:
-                    throw new ArgumentException($"Неподдерживаемая кодировка: {encoding}");
+                    return Encoding.UTF8;
             }
-        }
-
-        //Универсальный метод для создания публичных со значениями по умолчанию
-        public static string ConvertDefault(
-            string input,
-            EncodingType from = EncodingType.Utf16,
-            EncodingType to = EncodingType.Windows1251)
-        {
-            return Convert(input, from, to);
         }
     }
 }
