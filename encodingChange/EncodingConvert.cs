@@ -1,19 +1,12 @@
-﻿using System;
+﻿using encodingChange;
+using System;
 using System.IO;
 using System.Text;  
 
 namespace EncodingConverter
 {
-    public class EncodingConvert
+    public class EncodingConvert: AdditionalMethods
     {
-        public enum EncodingType
-        {
-            Utf8,
-            Windows1251,
-            Ascii,
-            Koi8r,
-            Unicode
-        }
 
         public static string ConvertString(string input, EncodingType from, EncodingType to)
         {
@@ -31,25 +24,6 @@ namespace EncodingConverter
             catch
             {
                 throw new InvalidOperationException($"Ошибка конвертации строки {input}");
-            }
-        }
-
-        protected static Encoding GetEncoding(EncodingType type)
-        {
-            switch (type)
-            {
-                case EncodingType.Utf8:
-                    return Encoding.UTF8;
-                case EncodingType.Windows1251:
-                    return Encoding.GetEncoding("windows-1251");
-                case EncodingType.Ascii:
-                    return Encoding.ASCII;
-                case EncodingType.Koi8r:
-                    return Encoding.GetEncoding("koi8-r");
-                case EncodingType.Unicode:
-                    return Encoding.Unicode;
-                default:
-                    return Encoding.UTF8;
             }
         }
     }

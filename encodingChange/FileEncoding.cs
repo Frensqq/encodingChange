@@ -6,7 +6,7 @@ using EncodingConverter;
 
 namespace encodingChange
 {
-    public class FileEncoding: EncodingConvert
+    public class FileEncoding: AdditionalMethods
     {
         public static string ReadFileToString(string filePath, EncodingType encoding)
         {
@@ -38,15 +38,6 @@ namespace encodingChange
 
             if (data == null)
                 throw new ArgumentException("Данные для записи не могут быть null");
-
-
-            // наверное лишнее 
-            // WriteAllBytes должен сам создавать файл
-            //if (!File.Exists(filePath))
-            //{
-            //    using (File.Create(filePath)) { }
-            //}
-
 
             try
             {
