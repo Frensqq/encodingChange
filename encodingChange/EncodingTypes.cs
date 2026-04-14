@@ -6,6 +6,7 @@ namespace encodingChange
 {
     public class EncodingTypes
     {
+        //для поддержки не стандартных форматов кодировки (koir-8 и windows1251)
         static EncodingTypes()
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
