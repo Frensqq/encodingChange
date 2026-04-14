@@ -1,13 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace encodingChange
 {
-    public class AdditionalClass
+    public class EncodingTypes
     {
+        static EncodingTypes()
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        }
+
         public enum EncodingType
         {
             Utf8,
@@ -16,7 +19,7 @@ namespace encodingChange
             Koi8r,
             Unicode
         }
- 
+
         protected static Encoding GetEncoding(EncodingType type)
         {
             switch (type)

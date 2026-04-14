@@ -4,7 +4,7 @@ using System.Text;
 
 namespace encodingChange
 {
-    public class FileEncoding: AdditionalClass
+    public class FileEncoding: EncodingTypes
     {
         public static string ReadFileToString(string filePath, EncodingType encoding)
         {
