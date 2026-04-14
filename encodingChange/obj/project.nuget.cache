@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "pW6xO+OfRLY=",
+  "dgSpecHash": "V5PQIgDlgf0=",
   "success": true,
   "projectFilePath": "W:\\Colledge\\02.02\\encodingChange\\encodingChange\\encodingChange.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Frens__\\.nuget\\packages\\system.buffers\\4.6.1\\system.buffers.4.6.1.nupkg.sha512",
+    "C:\\Users\\Frens__\\.nuget\\packages\\system.memory\\4.6.3\\system.memory.4.6.3.nupkg.sha512",
+    "C:\\Users\\Frens__\\.nuget\\packages\\system.numerics.vectors\\4.6.1\\system.numerics.vectors.4.6.1.nupkg.sha512",
+    "C:\\Users\\Frens__\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.1.2\\system.runtime.compilerservices.unsafe.6.1.2.nupkg.sha512",
+    "C:\\Users\\Frens__\\.nuget\\packages\\system.text.encoding.codepages\\10.0.6\\system.text.encoding.codepages.10.0.6.nupkg.sha512",
+    "C:\\Users\\Frens__\\.nuget\\packages\\system.valuetuple\\4.6.2\\system.valuetuple.4.6.2.nupkg.sha512"
+  ],
   "logs": []
 }

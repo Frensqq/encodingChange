@@ -5,7 +5,7 @@ using System.Text;
 
 namespace encodingChange
 {
-    public class EncodingConvert: AdditionalClass
+    public class EncodingConvert: EncodingTypes
     {
 
         public static string ConvertString(string input, EncodingType from, EncodingType to)
