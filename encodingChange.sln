@@ -5,8 +5,6 @@ VisualStudioVersion = 17.14.36908.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "encodingChange", "encodingChange\encodingChange.csproj", "{59E26BE4-5DBB-4CA2-A8B8-C4F09198DFE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "encodingChangeTests", "..\encodingChangeTests — копия\encodingChangeTests\encodingChangeTests.csproj", "{9C60B5BA-A93B-A24A-6CDF-9DFE985F6644}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{59E26BE4-5DBB-4CA2-A8B8-C4F09198DFE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59E26BE4-5DBB-4CA2-A8B8-C4F09198DFE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59E26BE4-5DBB-4CA2-A8B8-C4F09198DFE1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9C60B5BA-A93B-A24A-6CDF-9DFE985F6644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C60B5BA-A93B-A24A-6CDF-9DFE985F6644}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C60B5BA-A93B-A24A-6CDF-9DFE985F6644}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C60B5BA-A93B-A24A-6CDF-9DFE985F6644}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
