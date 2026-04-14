@@ -1,12 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using static EncodingConverter.EncodingConvert;
-using EncodingConverter;
 
 namespace encodingChange
 {
-    public class FileEncoding: AdditionalMethods
+    public class FileEncoding: AdditionalClass
     {
         public static string ReadFileToString(string filePath, EncodingType encoding)
         {

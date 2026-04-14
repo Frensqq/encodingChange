@@ -3,9 +3,9 @@ using System;
 using System.IO;
 using System.Text;  
 
-namespace EncodingConverter
+namespace encodingChange
 {
-    public class EncodingConvert: AdditionalMethods
+    public class EncodingConvert: AdditionalClass
     {
 
         public static string ConvertString(string input, EncodingType from, EncodingType to)
