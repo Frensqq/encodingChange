@@ -9,7 +9,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     
     <PackageId>Frensqq.EncodingConvert</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>Sergey Lyadov</Authors>
     <Description>Библиотека для конвертации строк между кодировками UTF-8, Windows-1251, ASCII, KOI8-R, UTF-16</Description>
     <PackageTags>encoding;converter;utf8;windows1251;ascii;koi8r;utf16</PackageTags>
