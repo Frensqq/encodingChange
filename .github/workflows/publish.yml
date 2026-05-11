@@ -14,5 +14,18 @@ jobs:
     - uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
-    - run: dotnet pack -c Release -o ./nupkgs
-    - run: dotnet nuget push "nupkgs/*.nupkg" --source "https://nuget.pkg.github.com/Frensqq/index.json" --api-key ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Restore
+      run: dotnet restore
+    
+    - name: Build
+      run: dotnet build -c Release
+    
+    - name: Pack
+      run: dotnet pack -c Release -o ./nupkgs --no-build
+    
+    - name: Push
+      run: dotnet nuget push "nupkgs/*.nupkg" --source "https://nuget.pkg.github.com/frensqq/index.json" --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
+
+
+      name: Publish to GitHub Packages
